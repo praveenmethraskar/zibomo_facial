@@ -1,5 +1,6 @@
 // src/config/config.js
 import dotenv from 'dotenv';
+dotenv.config();
 const config = {
     db: process.env.MONGO_URI,
     username: '...',
@@ -9,7 +10,7 @@ const config = {
     // ...
 }
 
-dotenv.config()
+
 
 const environment = process.env.NODE_ENV
 if (environment == "testing") {
