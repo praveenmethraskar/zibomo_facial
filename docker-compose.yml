@@ -1,18 +1,45 @@
 version: '3'
 services:
-  my-node-app:
-    image: zibomo_app
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=freshkart
+    volumes:
+      - mongo-data:/data/db
     networks:
-      - my-network
-    ports:
-      - "3000:3000"
-  mongodb:
-    image: mongo
-    networks:
-      - my-network
+      - bridge-network
     ports:
       - "27017:27017"
+  
+  app:
+    build: .
+    container_name: nodejs-app
+    environment:
+      - TESTING_PORT=3000
+      - PORT=5000
+      - NODE_ENV=development
+      - MONGO_URI=mongodb://mongo:27017/freshkart
+      - MONGO_TEST_CONN_URL=mongodb://mongo:27017/freshkart_test
+      - AUTH_KEY=436990AVoO3UjCn676a4df5P1
+      - LOGIN_TEMPLATE_ID=676a491fd6fc053fb6550572
+      - JWT_SECRET=2#rD@qF1vX8h!pR9mK6yZ$wT5aL^bJ3s
+      - JWT_USER_SESSION=24h
+      - JWT_EXPIRES_USER=100d
+      - JWT_EXPIRES_ADMIN=100d
+      - JWT_EXPIRES_MANAGER=100d
+      - JWT_EXPIRES_SUPER_ADMIN=100d
+    depends_on:
+      - mongo
+    networks:
+      - bridge-network
+    ports:
+      - "5000:5000"
 
 networks:
-  my-network:
+  bridge-network:
     driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local
