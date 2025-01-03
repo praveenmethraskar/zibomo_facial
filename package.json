@@ -1,0 +1,43 @@
+{
+  "name": "freshkart",
+  "version": "1.0.0",
+  "private": "true",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "cross-env NODE_ENV=development nodemon src/app.js",
+    "test": "cross-env NODE_ENV=testing mocha --exit \"src/tests/**/*.test.js\""
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@azure/cognitiveservices-face": "^5.0.0",
+    "@azure/ms-rest-azure-js": "^2.1.0",
+    "@azure/storage-blob": "^12.26.0",
+    "awilix": "^8.0.1",
+    "axios": "^1.7.9",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.2",
+    "sinon": "^19.0.2",
+    "stack-trace": "^1.0.0-pre2",
+    "uuid": "^11.0.3",
+    "validator": "^13.12.0",
+    "winston": "^3.17.0",
+    "xss": "^1.0.15"
+  },
+  "devDependencies": {
+    "ava": "^6.2.0",
+    "chai": "^5.1.2",
+    "cross-env": "^7.0.3",
+    "mocha": "^11.0.1",
+    "nodemon": "^3.1.9",
+    "supertest": "^7.0.0"
+  }
+}
