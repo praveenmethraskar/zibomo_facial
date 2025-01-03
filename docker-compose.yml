@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  app:
+    build: .
+    container_name: my-node-app
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=development
+      - MONGO_DEV_CONN_URL=mongodb://mongo:27017/freshkart
+      - MONGO_TEST_CONN_URL=mongodb://mongo:27017/freshkart_test
+      - MONGO_PROD_CONN_URL=mongodb://mongo:27017/freshkart_prod
+    depends_on:
+      - mongo
+
+volumes:
+  mongo-data:
