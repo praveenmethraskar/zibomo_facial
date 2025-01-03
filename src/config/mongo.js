@@ -106,7 +106,7 @@ const mongoManager = {
 }
 
 const getTimeout = () => {
-  if ((process.env.NODE_ENV = "testing")) {
+  if ((process.env.NODE_ENV === "testing")) {
     return 5000
   }
   return 5000
