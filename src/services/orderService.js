@@ -2,7 +2,7 @@ import { LockerStatus } from "../models/locker.js"
 import validator from "validator"
 import { OrderStatus } from "../models/enumValue.js"
 import { calculateTotalAdditionalPrice } from "../utils/paymentHelper.js"
-import { downloadImageFromAzure, uploadImageToAzure } from "../services/azureService.js"
+//import { downloadImageFromAzure, uploadImageToAzure } from "../services/azureService.js"
 import { uploadImageToS3, downloadImageFromS3, compareImageAndBase64 } from "../services/azureService.js";
 
 export default class OrderService {
