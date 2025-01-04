@@ -30,6 +30,10 @@ services:
       - JWT_EXPIRES_ADMIN=100d
       - JWT_EXPIRES_MANAGER=100d
       - JWT_EXPIRES_SUPER_ADMIN=100d
+      - AWS_ACCESS_KEY_ID=AKIA4DMVQ5ZJRMDJVX22
+      - AWS_SECRET_ACCESS_KEY=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
+      - AWS_BUCKET_NAME=zibomo
+      - AWS_REGION= ap-south-1
     depends_on:
       - mongo
     networks:
